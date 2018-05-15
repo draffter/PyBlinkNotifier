@@ -1,0 +1,8 @@
+[MATTERMOST]
+url = IP_ADDRES
+login_id = LOGIN_NAME
+password = PASSWORD
+verify: no
+scheme = http
+port: 8065
+debug: no
