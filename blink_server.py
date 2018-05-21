@@ -27,6 +27,7 @@ class BlinkServer(object):
             'port': self.config.get_int('MATTERMOST', 'port'),
             'debug': self.config.get_bool('MATTERMOST', 'debug')
         })
+        self.ignored_channels = self.config.get_string('MATTERMOST', 'ignored_channels').split(',')
         self.server = None
         self.start()
 
@@ -43,7 +44,10 @@ class BlinkServer(object):
             return
 
         if json_message['event'] == "posted":
-            self.parse_post(json.loads(json_message['data']['post']))
+            try:
+                self.ignored_channels.index(json_message['data']['channel_display_name'])
+            except ValueError:
+                self.parse_post(json.loads(json_message['data']['post']))
         elif json_message['event'] == "channel_viewed":
             self.mark_chanel_as_read(json_message['data']['channel_id'])
 

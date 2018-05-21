@@ -21,3 +21,6 @@ class Config(object):
 
     def get_bool(self, section, option):
         return self.config.getboolean(section, option)
+
+    def get(self, section, option):
+        return self.config.get(section, option)

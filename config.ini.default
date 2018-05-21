@@ -2,7 +2,8 @@
 url = IP_ADDRES
 login_id = LOGIN_NAME
 password = PASSWORD
-verify: no
+verify = no
 scheme = http
-port: 8065
-debug: no
+port = 8065
+debug = no
+ignored_channels =
